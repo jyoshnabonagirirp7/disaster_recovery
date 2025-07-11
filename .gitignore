@@ -1,0 +1,16 @@
+# Ignore Terraform state and provider files
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfplan
+terraform.tfvars.json
+crash.log
+override.tf
+override.tf.json
+tfplan.out
+*.log
+./modules/data/.terraform
+./backend/.terraform
+./region1/.terraform
+./region2/.terraform

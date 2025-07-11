@@ -1,0 +1,237 @@
+aws_vpc.main2: Refreshing state... [id=vpc-04ed6e2228680bee5]
+aws_eip.ntgwyB: Refreshing state... [id=eipalloc-0bd8005d84730e0f2]
+aws_s3_bucket.destination: Refreshing state... [id=disasterrecovery-bucket-replica]
+aws_iam_policy.ec2_s3_policy: Refreshing state... [id=arn:aws:iam::590157784153:policy/ec2-s3-read-policy]
+aws_iam_role.replication_role: Refreshing state... [id=s3-replication-role]
+aws_eip.ntgwy: Refreshing state... [id=eipalloc-0fe147401e101a861]
+aws_vpc.main: Refreshing state... [id=vpc-0920713abbd33a637]
+aws_iam_role.ec2_s3_access_role: Refreshing state... [id=ec2-s3-access-role]
+aws_iam_role_policy_attachment.attach_policy: Refreshing state... [id=ec2-s3-access-role/arn:aws:iam::590157784153:policy/ec2-s3-read-policy]
+aws_iam_instance_profile.ec2_s3_profile: Refreshing state... [id=ec2-s3-instance-profile]
+aws_internet_gateway.igwB: Refreshing state... [id=igw-0bc339551eece5354]
+aws_subnet.pubsubnet_b2: Refreshing state... [id=subnet-044f08cd40bfef8c7]
+aws_subnet.pubsubnet_b1: Refreshing state... [id=subnet-0b9a0ba6b89504a29]
+aws_subnet.prisubnet_b: Refreshing state... [id=subnet-0aa61761ce99dc400]
+aws_security_group.ec2-sgB: Refreshing state... [id=sg-01607870253b9c943]
+aws_security_group.alb-sgB: Refreshing state... [id=sg-0bd4e42cab785352d]
+aws_lb_target_group.tg-B: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:590157784153:targetgroup/tg-B/731cc0ecb084d69f]
+aws_nat_gateway.ntgwyB: Refreshing state... [id=nat-0a8c879d9819ca394]
+aws_s3_bucket_versioning.destination_versioning: Refreshing state... [id=disasterrecovery-bucket-replica]
+aws_security_group_rule.allow_alb_to_ec2B: Refreshing state... [id=sgrule-2771510063]
+aws_launch_template.Launch-template-B: Refreshing state... [id=lt-0d5d19aece2c4835c]
+aws_route_table.public-b: Refreshing state... [id=rtb-0fa98479c240f8fc0]
+aws_route_table.private-b: Refreshing state... [id=rtb-0cdc54071d6c20307]
+aws_lb.alb-B: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:590157784153:loadbalancer/app/alb-B/9d5afea5cba6752c]
+aws_internet_gateway.igw: Refreshing state... [id=igw-0edf5b4b4dd4d3a51]
+aws_subnet.pubsubnet_a1: Refreshing state... [id=subnet-07aeba0b433d17d64]
+aws_security_group.alb-sgA: Refreshing state... [id=sg-0bb48c1ce0f326108]
+aws_lb_target_group.tg-A: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:590157784153:targetgroup/tg-A/59ca41b4d0473f24]
+aws_subnet.pubsubnet_a2: Refreshing state... [id=subnet-07c35ce95fc6533dc]
+aws_security_group.ec2-sgA: Refreshing state... [id=sg-09cb9dba64e73f5e4]
+aws_subnet.prisubnet_a: Refreshing state... [id=subnet-0a3300c7a9eecaa91]
+aws_route_table_association.pub_sub_b2: Refreshing state... [id=rtbassoc-0fca0af6b590b08b0]
+aws_route_table_association.pub_sub_b1: Refreshing state... [id=rtbassoc-0a15104eba0d5c93c]
+aws_route_table_association.pri_sub_b: Refreshing state... [id=rtbassoc-0dc68b1fa6bf42046]
+aws_route_table.public: Refreshing state... [id=rtb-0d8d284dcc9dfbdad]
+aws_nat_gateway.ntgwy: Refreshing state... [id=nat-0b3bee082d8ecfc7b]
+aws_autoscaling_group.ASG-B: Refreshing state... [id=terraform-20250708180158913900000007]
+aws_lb.alb-A: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:590157784153:loadbalancer/app/alb-A/e6824c0f86419740]
+aws_security_group_rule.allow_alb_to_ec2A: Refreshing state... [id=sgrule-788573855]
+aws_launch_template.Launch-template-A: Refreshing state... [id=lt-0d516bcfdfae4abb5]
+aws_route_table.private: Refreshing state... [id=rtb-0117694755dff14c6]
+aws_route_table_association.pub_sub_a2: Refreshing state... [id=rtbassoc-0e02ec9639e729893]
+aws_route_table_association.pub_sub_a1: Refreshing state... [id=rtbassoc-06b76fc77d11fcbde]
+aws_lb_listener.alb-B-listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:590157784153:listener/app/alb-B/9d5afea5cba6752c/a2441fa5abdc5e52]
+aws_route_table_association.pri_sub_a: Refreshing state... [id=rtbassoc-01280c086c19fee65]
+aws_autoscaling_group.ASG-A: Refreshing state... [id=terraform-20250708180200681300000007]
+aws_lb_listener.alb-A-listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:590157784153:listener/app/alb-A/e6824c0f86419740/9944b9a6a6046bab]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_iam_role_policy.replication_policy will be created
+  + resource "aws_iam_role_policy" "replication_policy" {
+      + id          = (known after apply)
+      + name        = "s3-replication-policy"
+      + name_prefix = (known after apply)
+      + policy      = (known after apply)
+      + role        = "s3-replication-role"
+    }
+
+  # aws_route_table.private will be updated in-place
+  ~ resource "aws_route_table" "private" {
+        id               = "rtb-0117694755dff14c6"
+      ~ route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = "nat-0b3bee082d8ecfc7b"
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+          + {
+              + carrier_gateway_id         = ""
+              + cidr_block                 = "0.0.0.0/0"
+              + core_network_arn           = ""
+              + destination_prefix_list_id = ""
+              + egress_only_gateway_id     = ""
+              + gateway_id                 = "nat-0b3bee082d8ecfc7b"
+              + ipv6_cidr_block            = ""
+              + local_gateway_id           = ""
+              + nat_gateway_id             = ""
+              + network_interface_id       = ""
+              + transit_gateway_id         = ""
+              + vpc_endpoint_id            = ""
+              + vpc_peering_connection_id  = ""
+            },
+        ]
+        tags             = {
+            "Name" = "PrivateRouteTable-A"
+        }
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_route_table.private-b will be updated in-place
+  ~ resource "aws_route_table" "private-b" {
+        id               = "rtb-0cdc54071d6c20307"
+      ~ route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = "nat-0a8c879d9819ca394"
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+          + {
+              + carrier_gateway_id         = ""
+              + cidr_block                 = "0.0.0.0/0"
+              + core_network_arn           = ""
+              + destination_prefix_list_id = ""
+              + egress_only_gateway_id     = ""
+              + gateway_id                 = "nat-0a8c879d9819ca394"
+              + ipv6_cidr_block            = ""
+              + local_gateway_id           = ""
+              + nat_gateway_id             = ""
+              + network_interface_id       = ""
+              + transit_gateway_id         = ""
+              + vpc_endpoint_id            = ""
+              + vpc_peering_connection_id  = ""
+            },
+        ]
+        tags             = {
+            "Name" = "PrivateRouteTable-B"
+        }
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_s3_bucket.source will be created
+  + resource "aws_s3_bucket" "source" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "disasterrecovery-bucket"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_region               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = "us-east-1"
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+    }
+
+  # aws_s3_bucket_replication_configuration.replication will be created
+  + resource "aws_s3_bucket_replication_configuration" "replication" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "us-east-1"
+      + role   = "arn:aws:iam::590157784153:role/s3-replication-role"
+
+      + rule {
+          + id     = "replication-rule"
+          + status = "Enabled"
+
+          + destination {
+              + bucket        = "arn:aws:s3:::disasterrecovery-bucket-replica"
+              + storage_class = "STANDARD"
+            }
+
+          + filter {
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.source_versioning will be created
+  + resource "aws_s3_bucket_versioning" "source_versioning" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "us-east-1"
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+  # aws_security_group_rule.allow_alb_to_ec2A will be created
+  + resource "aws_security_group_rule" "allow_alb_to_ec2A" {
+      + from_port                = 80
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + region                   = "us-east-1"
+      + security_group_id        = "sg-09cb9dba64e73f5e4"
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = "sg-0bb48c1ce0f326108"
+      + to_port                  = 80
+      + type                     = "ingress"
+    }
+
+  # aws_security_group_rule.allow_alb_to_ec2B will be created
+  + resource "aws_security_group_rule" "allow_alb_to_ec2B" {
+      + from_port                = 80
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + region                   = "us-east-2"
+      + security_group_id        = "sg-01607870253b9c943"
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = "sg-0bd4e42cab785352d"
+      + to_port                  = 80
+      + type                     = "ingress"
+    }
+
+Plan: 6 to add, 2 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan.out
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan.out"
