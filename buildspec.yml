@@ -30,8 +30,8 @@ phases:
           -backend-config="key=region1/terraform.tfstate" \
           -backend-config="region=us-east-1"
       - terraform validate
-      - terraform plan -out=tfplan
-      - terraform apply -auto-approve tfplan
+      - terraform plan -var-file="vpca.tfvars" -out=tfplan
+      - terraform apply -var-file="vpca.tfvars" -auto-approve tfplan
       - cd ../../
 
       - echo "====== REGION 2: us-east-2 ======"
@@ -41,8 +41,8 @@ phases:
           -backend-config="key=region2/terraform.tfstate" \
           -backend-config="region=us-east-2"
       - terraform validate
-      - terraform plan -out=tfplan
-      - terraform apply -auto-approve tfplan
+      - terraform plan -var-file="vpcb.tfvars" -out=tfplan
+      - terraform apply -var-file="vpcb.tfvars" -auto-approve tfplan
       - cd ../../
 
   post_build:
