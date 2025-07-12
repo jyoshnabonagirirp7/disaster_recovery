@@ -23,7 +23,7 @@ phases:
 
   build:
     commands:
-      - echo "====== REGION 1: us-east-1 ======"
+      - echo "====== REGION 1 us-east-1 ======"
       - cd environment/region1
       - terraform init \
           -backend-config="bucket=${BACKEND_BUCKET}" \
@@ -34,7 +34,7 @@ phases:
       - terraform apply -var-file="vpca.tfvars" -auto-approve tfplan
       - cd ../../
 
-      - echo "====== REGION 2: us-east-2 ======"
+      - echo "====== REGION 2 us-east-2 ======"
       - cd environment/region2
       - terraform init \
           -backend-config="bucket=${BACKEND_BUCKET}" \
