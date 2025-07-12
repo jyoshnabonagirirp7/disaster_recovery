@@ -1,31 +1,55 @@
 version: 0.2
 
+env:
+  variables:
+    BACKEND_BUCKET: "s3-backend-disaster-recoveryproj987"
+
 phases:
   install:
     runtime-versions:
       python: 3.8
     commands:
-      - echo Installing Terraform...
+      - echo "Installing Terraform..."
       - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
       - unzip terraform.zip
       - mv terraform /usr/local/bin/
       - terraform version
+      - set -e
+
   pre_build:
     commands:
-      - echo Logging in to AWS...
+      - echo "Validating AWS credentials..."
       - aws sts get-caller-identity
-      - terraform init -backend-config="bucket=your-tf-backend-bucket" -backend-config="key=dr/terraform.tfstate" -backend-config="region=us-east-1"
+
   build:
     commands:
-      - echo Validating Terraform configuration...
+      - echo "====== REGION 1: us-east-1 ======"
+      - cd environment/region1
+      - terraform init \
+          -backend-config="bucket=${BACKEND_BUCKET}" \
+          -backend-config="key=region1/terraform.tfstate" \
+          -backend-config="region=us-east-1"
       - terraform validate
-      - echo Creating execution plan...
       - terraform plan -out=tfplan
+      - terraform apply -auto-approve tfplan
+      - cd ../../
+
+      - echo "====== REGION 2: us-east-2 ======"
+      - cd environment/region2
+      - terraform init \
+          -backend-config="bucket=${BACKEND_BUCKET}" \
+          -backend-config="key=region2/terraform.tfstate" \
+          -backend-config="region=us-east-2"
+      - terraform validate
+      - terraform plan -out=tfplan
+      - terraform apply -auto-approve tfplan
+      - cd ../../
+
   post_build:
     commands:
-      - echo Applying Terraform changes...
-      - terraform apply -auto-approve tfplan
+      - echo "✅ Terraform apply completed in both regions."
 
 artifacts:
   files:
-    - "**/*"
+    - environment/region1/tfplan
+    - environment/region2/tfplan
