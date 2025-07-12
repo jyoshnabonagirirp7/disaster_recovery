@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    BACKEND_BUCKET: "s3-backend-disaster-recoveryproj987"
-
 phases:
   install:
     runtime-versions:
@@ -25,10 +21,7 @@ phases:
     commands:
       - echo "====== REGION 1 us-east-1 ======"
       - cd environment/region1
-      - terraform init \
-          -backend-config="bucket=${BACKEND_BUCKET}" \
-          -backend-config="key=region1/terraform.tfstate" \
-          -backend-config="region=us-east-1"
+      - terraform init -backend-config="bucket=s3-backend-disaster-recoveryproj987" -backend-config="key=region1/terraform.tfstate" -backend-config="region=us-east-1"
       - terraform validate
       - terraform plan -var-file="vpca.tfvars" -out=tfplan
       - terraform apply -var-file="vpca.tfvars" -auto-approve tfplan
@@ -36,10 +29,7 @@ phases:
 
       - echo "====== REGION 2 us-east-2 ======"
       - cd environment/region2
-      - terraform init \
-          -backend-config="bucket=${BACKEND_BUCKET}" \
-          -backend-config="key=region2/terraform.tfstate" \
-          -backend-config="region=us-east-2"
+      - terraform init -backend-config="bucket=s3-backend-disaster-recoveryproj987" -backend-config="key=region2/terraform.tfstate" -backend-config="region=us-east-2"
       - terraform validate
       - terraform plan -var-file="vpcb.tfvars" -out=tfplan
       - terraform apply -var-file="vpcb.tfvars" -auto-approve tfplan
