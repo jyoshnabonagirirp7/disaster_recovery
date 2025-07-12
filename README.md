@@ -101,4 +101,8 @@ terraform plan
 
 # Step 4: Apply the configuration
 terraform apply
+```
 
+## Author 
+
+Sakala Jyoshna

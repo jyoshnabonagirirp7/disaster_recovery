@@ -44,5 +44,5 @@ module "compute" {
   launch_template_name  = var.launch_template_name
   target_group_name     = var.target_group_name
   alb_listener_port     = var.alb_listener_port
-  ec2_instance_profile  = aws_iam_instance_profile.ec2_profile.name
+  ec2_instance_profile  = "ec2_s3_profile"
 }
