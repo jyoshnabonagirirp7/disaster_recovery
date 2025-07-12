@@ -19,6 +19,6 @@ resource "aws_iam_role_policy_attachment" "ec2_s3_access" {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "ec2_s3_profile"
+  name = "ec2_s3_profile_new"
   role = aws_iam_role.ec2_role.name
 }
