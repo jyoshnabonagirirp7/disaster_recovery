@@ -29,7 +29,7 @@ phases:
 
       - echo "====== REGION 2 us-east-2 ======"
       - cd environment/region2
-      - terraform init -backend-config="bucket=s3-backend-disaster-recoveryproj987" -backend-config="key=region2/terraform.tfstate" -backend-config="region=us-east-2"
+      - terraform init -backend-config="bucket=s3-backend-disaster-recoveryproj987" -backend-config="key=region2/terraform.tfstate" -backend-config="region=us-east-1"
       - terraform validate
       - terraform plan -var-file="vpcb.tfvars" -out=tfplan
       - terraform apply -auto-approve tfplan
